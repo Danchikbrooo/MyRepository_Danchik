@@ -1,4 +1,5 @@
 class animal:
+
     def __init__(self, name: str, color: str, country: str,  age=10, height=35, length=35):
         self.name = name
         self.color = color
@@ -40,3 +41,20 @@ class high_horse(animal):
 high_horse = high_horse("ben", "white", "Mexico", age=12, height=170)
 print("character horse:")
 print("name:", high_horse.name, "color:", high_horse.color, "country:", high_horse.country, "age:", high_horse.age, "height:", high_horse.height, "sound:", high_horse.calculate_sound())
+
+
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Время выполнения функции {func.__name__}: {end_time - start_time} сек.")
+        return result
+    return wrapper
+
+@timer
+def some_function():
+    time.sleep(2)
+print(some_function)
